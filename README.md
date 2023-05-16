@@ -1,4 +1,8 @@
 # Django Rest Framework (DRF) Course
+This is a project created while following a tutorial by Bobby Stearman, found on [youtube](https://www.youtube.com/watch?v=tujhGdn1EMI&t=1448s&ab_channel=freeCodeCamp.org).
+The first part of this README entails the project setup and other deatils on the project that were written by Bobby Stearman. The second part entails notes written by myself that are not included in the project tutorial.
+
+## Introduction
 Welcome to this full Django Rest Framework (DRF)course. 
 This course is perfect if you are looking to learn DRF and build your own API application.
 ***
@@ -47,3 +51,40 @@ Each module has a walk through video. All videos can be found in my (Django Rest
 Please open /steps/module_1 to begin.
 ***
 ***
+
+
+# My Notes on the course
+While following the lesson on django framework there were new concepts that I cam across and problems that I encountered that were not necessarily explained during the course especially about docker. Below I shall highlight some of these points.
+
+## Docker Notes
+To get docker to work as shown in the lesson video, one needs to first make the entrypoints.sh file an executable. The file is found in the path `backend/docker/entrypoints/entrypoint.sh`, to make the file executable cd into the entrypoints directory and run the command:
+```
+chmod +x entrypoint.sh
+```
+
+Then ensuring you have docker-compose installed in your system, run the following command to run docker, which will start 2 containers that are defined in the docker-compose.yml file found in root:
+```
+sudo docker-compose up -d --build
+```
+When you run the above command, Docker will look for a docker-compose.yml file in the current directory (unless a different file is specified with the -f flag). It will then read the configuration in the Compose file and perform the following actions:
+
+1. Build any necessary Docker images based on the instructions in the Dockerfiles associated with the services defined in the Compose file.
+2. Create and start the containers defined in the Compose file.
+3. If the **-d** flag is used, the containers will run in the background, and you'll get the terminal prompt back.
+4. If the **--build** flag is used, Docker will rebuild the images even if they already exist, ensuring that any changes in the Dockerfile or the build context are incorporated.
+
+Overall, the command docker-compose up -d --build is commonly used when you want to build and start a multi-container application defined in a Docker Compose file.
+
+If you wish to see the currently running containers in docker run the following command:
+```
+sudo docker ps
+```
+Take note of the name of the containers because to run the terminal of a particular container you'll need to run this command:
+```
+docker exec -it <container-name> bash
+```
+This would open a new terminal session inside the container, enabling you to run commands interactively.
+
+By using docker exec, you can execute commands within a running Docker container, facilitating various operations and tasks within the container environment.
+
+**Docker volumes** are also enabled allowing data created in the docker container to be persisted. That's why when one creates files when in the docker container they appear in the project's directory.
