@@ -88,3 +88,8 @@ This would open a new terminal session inside the container, enabling you to run
 By using docker exec, you can execute commands within a running Docker container, facilitating various operations and tasks within the container environment.
 
 **Docker volumes** are also enabled allowing data created in the docker container to be persisted. That's why when one creates files when in the docker container they appear in the project's directory.
+
+## Authentication
+Anywhere where permission class is added in a view will enforce authentication, meaning you can't access without the token.
+Find info on DRF authentication [here](https://www.django-rest-framework.org/api-guide/authentication/).
+
