@@ -57,34 +57,8 @@ Please open /steps/module_1 to begin.
 While following the lesson on django framework there were new concepts that I cam across and problems that I encountered that were not necessarily explained during the course especially about docker. Below I shall highlight some of these points.
 
 ## Docker Notes
-### <u> Creating docker group</u>
-While using docker, it was necessary to prepend sudo before every docker command which was a tad inconvenient. The other issue was that while working in the docker container, one needed to either create filesin the docker terminal or if they wish to use VS code to create files or make edits to the project, one needed to constantly click on a button that would pop up that read 'save as sudo' and then input their password. This is because the docker daemon normally runs at root access and thus any app that tries to interact with it needs sudo access.
-
-To solve the sudo issue one could create a docker group and add their user to the group. This grants the user access to docker without sudo. Note that this could have security risks in case one runs a malicious container. But for convenience and due to the fact that I was not intending to use docker as frequently, I enabled the docker group by following the steps in this [document](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user). The steps are:
-
-1. Create the docker group.
-```
-sudo groupadd docker
-```
-1. Add your user to the docker group.
-
-```
-sudo usermod -aG docker $USER
-```
-
-3. Log out and log back in so that your group membership is re-evaluated.
-
-If you’re running Linux in a virtual machine, it may be necessary to restart the virtual machine for changes to take effect.
-
-You can also run the following command to activate the changes to groups:
-```
-newgrp docker
-```
-4. Verify that you can run docker commands without sudo.
-```
-docker run hello-world
-```
-This command downloads a test image and runs it in a container. When the container runs, it prints a message and exits.
+### <u> Before using docker</u>
+Note that before you create a docker container, if you build an image, it will now need sudo access to edit any files made afterwards which is a pain.
 
 ### <u> Using docker for the tutorial</u>
 To get docker to work as shown in the lesson video, one needs to first make the entrypoints.sh file an executable. The file is found in the path `backend/docker/entrypoints/entrypoint.sh`, to make the file executable cd into the entrypoints directory and run the command:
